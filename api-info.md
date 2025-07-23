@@ -3,7 +3,7 @@ Description: This API provides access to the SGuard system, allowing users to ma
 
 ## Important Information
 - **API Base URL:** `https://sguard-api.up.railway.app`
-- **Authentication:** OAuth2 with Discord for secure access.
+- **Authentication:** OAuth2 with Discord for secure access. All endpoints require a valid Discord OAuth2 token, and the API will verify that the user has the necessary permissions (e.g., admin/owner) for the specified guild before allowing access or modifications.
 - **Rate Limiting:** Implemented to prevent abuse and ensure fair usage.
 - **Documentation:** Available at `https://docs.sguard.com/api`
 - **Versioning:** The API follows semantic versioning, with the current version being `v1`.
@@ -17,9 +17,8 @@ Description: This API provides access to the SGuard system, allowing users to ma
 
 
 ## Endpoints
-
 ### Prefix
-- **URL:** `/api/prefix`
+- **URL:** `/api/{guild_id}/prefix`
 - **Methods:**
   - **GET:** Retrieves the current bot prefix for the server.
     - **Auth required:** Yes
@@ -38,3 +37,22 @@ Description: This API provides access to the SGuard system, allowing users to ma
       { "success": true, "prefix": "?" }
       ```
 
+### Moderation Levels
+- **URL:** `/api/{guild_id}/moderation`
+- **Methods:**
+    - **GET:** Retrieves the current moderation level settings for the server.
+        - **Auth required:** Yes
+        - **Response example:**
+        ```json
+        { "level": "light", "customSettings": { ... } }
+        ```
+    - **PUT:** Updates the moderation level settings for the server.
+        - **Auth required:** Yes
+        - **Request body example:**
+        ```json
+        { "level": "strict", "customSettings": { ... } }
+        ```
+        - **Response example:**
+        ```json
+        { "success": true, "level": "strict" }
+        ```
