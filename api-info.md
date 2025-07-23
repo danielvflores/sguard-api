@@ -18,7 +18,7 @@ Description: This API provides access to the SGuard system, allowing users to ma
 
 ## Endpoints
 ### Prefix
-- **URL:** `/api/{guild_id}/prefix`
+- **URL:** `/api/{guildId}/prefix`
 - **Methods:**
   - **GET:** Retrieves the current bot prefix for the server.
     - **Auth required:** Yes
@@ -38,7 +38,7 @@ Description: This API provides access to the SGuard system, allowing users to ma
       ```
 
 ### Moderation Levels
-- **URL:** `/api/{guild_id}/moderation`
+- **URL:** `/api/{guildId}/moderation`
 - **Methods:**
     - **GET:** Retrieves the current moderation level settings for the server.
         - **Auth required:** Yes
