@@ -56,3 +56,34 @@ Description: This API provides access to the SGuard system, allowing users to ma
         ```json
         { "success": true, "level": "strict" }
         ```
+
+### User Information
+- **URL:** `/api/me`
+- **Methods:**
+    - **GET:** Retrieves information about the authenticated user.
+        - **Auth required:** Yes
+        - **Response example:**
+```json
+{ "id": "123456789", "username": "User", "discriminator": "0001", "avatar": "avatar_url" }
+```
+
+### Guild Information
+- **URL:** `/api/guilds`
+- **Methods:**
+    - **GET:** Retrieves a list of guilds the authenticated user is a member of.
+        - **Auth required:** Yes
+        - **Response example:**
+```json
+[
+    { "id": "123456789", "name": "Guild 1", "icon": "icon_url" },
+    { "id": "987654321", "name": "Guild 2", "icon": "icon_url" }
+]
+```
+- **URL:** `/api/guilds/{guildId}`
+- **Methods:**
+    - **GET:** Retrieves detailed information about a specific guild.
+        - **Auth required:** Yes
+        - **Response example:**
+```json
+{ "id": "123456789", "name": "Guild 1", "icon": "icon_url", "memberCount": 100, "ownerId": "987654321" }
+```
