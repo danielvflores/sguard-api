@@ -20,6 +20,9 @@ app.use('/api', userRoutes);
 import guildRoutes from './routes/guildRoutes';
 app.use('/api', guildRoutes);
 
+// Moderation routes, manage moderation settings for guilds
+import moderationRoutes from './routes/moderationRoutes';
+app.use('/api', moderationRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
