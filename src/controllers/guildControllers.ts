@@ -24,6 +24,7 @@ export const guildConfig = (req: Request, res: Response) => {
   const { guildId } = req.params;
   const config = {
     settings: {
+      id: guildId,
       prefix: '!',
       moderationLevel: 'medium',
       logChannel: 'logs'
@@ -34,17 +35,17 @@ export const guildConfig = (req: Request, res: Response) => {
 
 export const guildLogs = (req: Request, res: Response) => {
   const { guildId } = req.params;
-  res.json({ logChannel: 'logs' });
+  res.json({ logChannel: 'logs', id: guildId });
 };
 
 export const updateGuildConfig = (req: Request, res: Response) => {
   const { guildId } = req.params;
   const { settings } = req.body;
-  res.json({ success: true, settings });
+  res.json({ success: true, settings, id: guildId });
 };
 
 export const updateGuildLogs = (req: Request, res: Response) => {
   const { guildId } = req.params;
   const { logChannel } = req.body;
-  res.json({ success: true, logChannel });
+  res.json({ success: true, logChannel, id: guildId });
 };
