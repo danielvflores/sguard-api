@@ -1,3 +1,6 @@
+### SGuard API Documentation
+---
+
 Architect Model: ["ApiRest"]
 Description: This API provides access to the SGuard system, allowing users to manage all configurations and personalize their security settings.
 
