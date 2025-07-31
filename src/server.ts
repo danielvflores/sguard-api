@@ -25,6 +25,10 @@ app.use('/api', guildRoutes);
 import moderationRoutes from './routes/moderationRoutes';
 app.use('/api', moderationRoutes);
 
+// OAuth2 routes, handle Discord OAuth2 authentication
+import oauth2Routes from './routes/oauth2Route';
+app.use('/api', oauth2Routes);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
