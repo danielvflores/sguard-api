@@ -20,32 +20,50 @@ export const guildById = (req: Request, res: Response) => {
   res.json(guild);
 };
 
+const guildConfigs: Record<string, { prefix: string; moderationLevel: string; logChannel: string }> = {};
+const guildLogsData: Record<string, string> = {};
+
 export const guildConfig = (req: Request, res: Response) => {
   const { guildId } = req.params;
-  const config = {
-    settings: {
-      id: guildId,
+  if (!guildConfigs[guildId]) {
+    guildConfigs[guildId] = {
       prefix: '!',
       moderationLevel: 'medium',
       logChannel: 'logs'
-    }
-  };
-  res.json(config);
+    };
+  }
+  res.json({ settings: guildConfigs[guildId] });
 };
+
 
 export const guildLogs = (req: Request, res: Response) => {
   const { guildId } = req.params;
-  res.json({ logChannel: 'logs', id: guildId });
+  if (!guildLogsData[guildId]) {
+    guildLogsData[guildId] = 'logs';
+  }
+  res.json({ logChannel: guildLogsData[guildId] });
 };
+
 
 export const updateGuildConfig = (req: Request, res: Response) => {
   const { guildId } = req.params;
   const { settings } = req.body;
-  res.json({ success: true, settings, id: guildId });
+  if (settings && typeof settings === 'object') {
+    guildConfigs[guildId] = settings;
+    res.json({ success: true, settings });
+  } else {
+    res.status(400).json({ error: 'Invalid settings', code: 400 });
+  }
 };
+
 
 export const updateGuildLogs = (req: Request, res: Response) => {
   const { guildId } = req.params;
   const { logChannel } = req.body;
-  res.json({ success: true, logChannel, id: guildId });
+  if (typeof logChannel === 'string') {
+    guildLogsData[guildId] = logChannel;
+    res.json({ success: true, logChannel });
+  } else {
+    res.status(400).json({ error: 'Invalid logChannel', code: 400 });
+  }
 };
