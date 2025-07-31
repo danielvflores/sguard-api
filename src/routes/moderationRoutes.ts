@@ -1,9 +1,11 @@
+
 import { Router } from 'express';
 import { getModerationLevel, updateModerationLevel } from '../controllers/moderationControllers';
+import { authMiddleware } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.get('/:guildId/moderation', getModerationLevel);
-router.put('/:guildId/moderation', updateModerationLevel);
+router.get('/:guildId/moderation', authMiddleware, getModerationLevel);
+router.put('/:guildId/moderation', authMiddleware, updateModerationLevel);
 
 export default router;
