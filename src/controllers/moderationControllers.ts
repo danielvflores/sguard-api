@@ -1,10 +1,17 @@
+
 import { Request, Response } from 'express';
 
+let moderationData = {
+  level: 'light',
+  customSettings: {}
+};
+
 export const getModerationLevel = (req: Request, res: Response) => {
-  res.json({ level: 'light', customSettings: { /* ... */ } });
+  res.json(moderationData);
 };
 
 export const updateModerationLevel = (req: Request, res: Response) => {
   const { level, customSettings } = req.body;
+  moderationData = { level, customSettings };
   res.json({ success: true, level });
 };
