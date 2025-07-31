@@ -4,7 +4,8 @@
 ---
 
 <p align="center">
-  <b>Name:</b> <code>S-Guard</code> <br>
+  <b>Global Project Name:</b> <code>SGuard</code> <br>
+  <b>This Project Name:</b> <code>SGuard API</code> <br>
   <b>Description:</b> <i>A simple Discord bot built with TypeScript. This prototype aims to compete with the former D-Safe bot, which was discontinued. The goal is to create an enhanced and free alternative to D-Safe for everyone.</i>
 </p>
 
